@@ -5,7 +5,7 @@ export const HeaderContainer = styled.div`
 	align-items: center;
 	justify-content: start;
 	height: 80px;
-	background-color: white;
+	background-color: inherit;
 	border-bottom: 1px solid black;
 	padding-left: 150px;
 	color: grey;
