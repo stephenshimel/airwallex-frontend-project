@@ -1,9 +1,15 @@
-import React, { ReactElement, useEffect, useRef } from "react";
+import React, { ReactElement, useRef } from "react";
 import { ModalWrapper } from "./styles/Modal.styles";
 import { TModalProps } from "./types";
 import { useEventListener } from "../../utils/hooks/useEventListener";
 
-const Modal = ({ content, closeModal }: TModalProps): ReactElement => {
+// in order to reuse Modal component, just need to create a state in its container and pass the closeModal function to the Modal
+const Modal = ({
+	content,
+	closeModal,
+	padding,
+	className,
+}: TModalProps): ReactElement => {
 	const modalRef = useRef<HTMLDivElement | null>(null);
 
 	const handleClickOutside = (event: MouseEvent) => {
@@ -14,7 +20,11 @@ const Modal = ({ content, closeModal }: TModalProps): ReactElement => {
 
 	useEventListener("mousedown", handleClickOutside);
 
-	return <ModalWrapper ref={modalRef}>{content}</ModalWrapper>;
+	return (
+		<ModalWrapper ref={modalRef} padding={padding} className={className}>
+			{content}
+		</ModalWrapper>
+	);
 };
 
 export default Modal;

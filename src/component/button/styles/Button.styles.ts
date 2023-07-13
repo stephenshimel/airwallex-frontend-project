@@ -7,4 +7,7 @@ export const StyledButton = styled.button`
 	color: grey;
 	border: 2px solid grey;
 	cursor: pointer;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 `;

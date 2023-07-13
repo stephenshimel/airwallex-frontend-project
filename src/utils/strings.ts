@@ -5,4 +5,5 @@ export const strings = {
 	homepageAdTitle: "A better way to enjoy every day",
 	homepageAdText: "Be the first to know when we launch",
 	requestInviteButtonText: "Request an invite",
+	requestFormTitle: "Request an invite",
 };

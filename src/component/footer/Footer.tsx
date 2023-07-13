@@ -1,15 +1,15 @@
 import React from "react";
 import { v4 as uuidv4 } from "uuid";
-import * as styles from "./styles/Footer.styles";
+import { FooterContainer, Line } from "./styles/Footer.styles";
 import { TFooterProps } from "./types";
 
-const Footer: React.FC<TFooterProps> = ({ texts }) => {
+const Footer: React.FC<TFooterProps> = ({ texts, className }) => {
 	return (
-		<styles.FooterContainer>
+		<FooterContainer className={className}>
 			{texts.map(text => (
-				<styles.Line key={uuidv4()}>{text}</styles.Line>
+				<Line key={uuidv4()}>{text}</Line>
 			))}
-		</styles.FooterContainer>
+		</FooterContainer>
 	);
 };
 

@@ -10,6 +10,7 @@ import {
 } from "./styles/Home.styles";
 import Button from "../../component/button/Button";
 import Modal from "../../component/modal/Modal";
+import Form from "../../component/form/Form";
 
 function Home() {
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -17,6 +18,7 @@ function Home() {
 	return (
 		<PageWrapper isActive={!isModalOpen}>
 			<Header title={strings.companyName} />
+
 			<PageContent>
 				<AdTitle>{strings.homepageAdTitle}</AdTitle>
 				<AdText>{strings.homepageAdText}</AdText>
@@ -26,16 +28,18 @@ function Home() {
 						setIsModalOpen(true);
 					}}
 				/>
-				{isModalOpen && (
-					<Modal
-						content={<div>content</div>}
-						closeModal={() => {
-							setIsModalOpen(false);
-						}}
-					/>
-				)}
 			</PageContent>
+
 			<Footer texts={[strings.madeFrom, strings.copyRight]} />
+
+			{isModalOpen && (
+				<Modal
+					content={<Form title={strings.requestFormTitle} />}
+					closeModal={() => {
+						setIsModalOpen(false);
+					}}
+				/>
+			)}
 		</PageWrapper>
 	);
 }
