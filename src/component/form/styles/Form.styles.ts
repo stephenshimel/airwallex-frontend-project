@@ -9,6 +9,7 @@ export const InputsWrapper = styled.div`
 export const FormTitle = styled.h2`
 	text-align: center;
 	color: grey;
+	font-style: italic;
 `;
 
 export const SeparatorLine = styled.div`
@@ -16,4 +17,10 @@ export const SeparatorLine = styled.div`
 	height: 1px;
 	width: 50px;
 	margin: 0 auto 50px;
+`;
+
+export const ErrorMessage = styled.p`
+	text-align: center;
+	color: grey;
+	font-style: italic;
 `;

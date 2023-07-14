@@ -9,4 +9,8 @@ export type TFormProps<T extends FieldValues> = UseFormProps<T> & {
 	formItems: TInputProps[];
 	onSubmit?: () => void;
 	validationSchema: yup.ObjectSchema<T>;
+	callBackIfValidationPassed?: Function;
+	isLoading?: boolean;
+	isError?: boolean;
+	error?: string;
 };

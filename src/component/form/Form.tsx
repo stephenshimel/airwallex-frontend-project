@@ -6,17 +6,23 @@ import {
 	InputsWrapper,
 	FormTitle,
 	SeparatorLine,
+	ErrorMessage,
 } from "./styles/Form.styles";
 import { TFormProps } from "./types";
 import Button from "../button/Button";
 import Input from "../input/Input";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { strings } from "../../utils/strings";
 
 const Form = <T extends FieldValues>({
 	title,
 	className,
 	formItems,
 	validationSchema,
+	callBackIfValidationPassed,
+	isLoading,
+	isError,
+	error,
 }: TFormProps<T>): ReactElement => {
 	const {
 		register,
@@ -27,7 +33,7 @@ const Form = <T extends FieldValues>({
 	});
 
 	const onSubmit: SubmitHandler<T> = data => {
-		console.log("onSubmit", data);
+		callBackIfValidationPassed && callBackIfValidationPassed(data);
 	};
 
 	return (
@@ -46,7 +52,14 @@ const Form = <T extends FieldValues>({
 					);
 				})}
 			</InputsWrapper>
-			<Button title='Send' isFullWidth buttonSize='small' type='submit' />
+			<Button
+				label={isLoading ? strings.loadingButtonLabel : strings.sendButtonLabel}
+				isFullWidth
+				buttonSize='small'
+				type='submit'
+				disabled={isLoading}
+			/>
+			{isError && <ErrorMessage>{error?.toString()}</ErrorMessage>}
 		</FormWrapper>
 	);
 };

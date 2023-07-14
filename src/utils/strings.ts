@@ -6,4 +6,6 @@ export const strings = {
 	homepageAdText: "Be the first to know when we launch",
 	requestInviteButtonText: "Request an invite",
 	requestFormTitle: "Request an invite",
+	sendButtonLabel: "Send",
+	loadingButtonLabel: "Sending, pleasae wait...",
 };

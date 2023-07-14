@@ -11,8 +11,9 @@ export const StyledButton = styled.button<TStyledButtonProps>`
 	background-color: transparent;
 	font-size: 17px;
 	padding: ${({ buttonSize = "regular" }) => buttonSizeToPadding[buttonSize]};
-	color: grey;
-	border: 2px solid grey;
+	color: ${props => (props.disabled ? "#cccbca" : "grey")};
+	border: 1px solid;
+	border-color: ${props => (props.disabled ? "#cccbca" : "black")};
 	cursor: pointer;
 	display: block;
 	margin: 0 auto;

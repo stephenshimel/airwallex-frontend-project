@@ -24,7 +24,7 @@ function Home() {
 				<AdTitle>{strings.homepageAdTitle}</AdTitle>
 				<AdText>{strings.homepageAdText}</AdText>
 				<Button
-					title={strings.requestInviteButtonText}
+					label={strings.requestInviteButtonText}
 					callback={() => {
 						setIsModalOpen(true);
 					}}

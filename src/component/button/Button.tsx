@@ -4,12 +4,13 @@ import { StyledButton } from "./styles/Button.styles";
 
 //expose className to allow style customization of this reusable component
 const Button = ({
-	title,
+	label,
 	callback,
 	className,
 	isFullWidth = false,
 	buttonSize = "regular",
 	type,
+	disabled = false,
 }: TButtonProps) => {
 	return (
 		<StyledButton
@@ -18,8 +19,9 @@ const Button = ({
 			isFullWidth={isFullWidth}
 			buttonSize={buttonSize}
 			type={type}
+			disabled={disabled}
 		>
-			{title}
+			{label}
 		</StyledButton>
 	);
 };

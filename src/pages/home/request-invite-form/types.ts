@@ -1,5 +1,5 @@
 export type TFormFields = {
-	fullName: string;
+	name: string;
 	email: string;
 	confirmEmail: string;
 };
