@@ -5,8 +5,9 @@ import { TInputProps } from "../../../component/form/types";
 import { TFormFields } from "./types";
 import { schema } from "./schema";
 import usePostRequestInviteData from "../../../api/usePostRequestInvite";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm, SubmitHandler } from "react-hook-form";
 
-// this form will handle
 const RequestInviteForm = () => {
 	const requestInviteFormItems: TInputProps[] = [
 		{ name: "name", title: "Full name" },
@@ -14,21 +15,41 @@ const RequestInviteForm = () => {
 		{ name: "confirmEmail", title: "Confirm Email" },
 	];
 
-	const { mutate, isLoading, isError, error } = usePostRequestInviteData();
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+	} = useForm<TFormFields>({
+		resolver: yupResolver(schema),
+	});
 
-	const callBackIfValidationPassed = ({ name, email }: TFormFields) => {
+	const onSubmit: SubmitHandler<TFormFields> = ({
+		name,
+		email,
+	}: TFormFields) => {
 		mutate({ name, email });
 	};
 
-	return (
+	const {
+		mutate,
+		isLoading,
+		isError: isServerError,
+		error: serverError,
+		isSuccess,
+	} = usePostRequestInviteData();
+
+	return isSuccess ? (
+		<Form title={strings.requestFormTitle} />
+	) : (
 		<Form<TFormFields>
 			title={strings.requestFormTitle}
 			formItems={requestInviteFormItems}
-			validationSchema={schema}
-			callBackIfValidationPassed={callBackIfValidationPassed}
 			isLoading={isLoading}
-			isError={isError}
-			error={error as string}
+			isServerError={isServerError}
+			serverError={serverError as string}
+			onSubmit={handleSubmit(onSubmit)}
+			errors={errors}
+			register={register}
 		/>
 	);
 };

@@ -8,4 +8,5 @@ export const strings = {
 	requestFormTitle: "Request an invite",
 	sendButtonLabel: "Send",
 	loadingButtonLabel: "Sending, pleasae wait...",
+	submitSuccessPage: { title: "All done!" },
 };
