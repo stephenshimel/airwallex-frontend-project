@@ -7,6 +7,7 @@ import {
 	FormTitle,
 	SeparatorLine,
 	ErrorMessage,
+	FormSubTitle,
 } from "./styles/Form.styles";
 import { TFormProps } from "./types";
 import Button from "../button/Button";
@@ -15,42 +16,56 @@ import { strings } from "../../utils/strings";
 
 const Form = <T extends FieldValues>({
 	title,
+	subTitle,
+	buttonLabel = "Save",
 	className,
-	formItems,
-	isLoading,
-	isServerError,
-	serverError,
-	onSubmit,
-	errors,
-	register,
-}: TFormProps<T>): ReactElement => (
-	<FormWrapper className={className} onSubmit={onSubmit}>
-		<FormTitle>{title}</FormTitle>
-		<SeparatorLine />
-		{formItems && register && (
-			<InputsWrapper>
-				{formItems.map(formItem => {
-					return (
-						<Input
-							key={uuidv4()}
-							title={formItem.title}
-							{...register(formItem.name as Path<T>)}
-							errorMsg={errors && (errors[formItem.name]?.message as string)}
-						/>
-					);
-				})}
-			</InputsWrapper>
-		)}
+	formRelated = {},
+}: TFormProps<T>): ReactElement => {
+	const {
+		formItems,
+		isLoading,
+		isServerError,
+		serverError,
+		onSubmit,
+		errors,
+		register,
+	} = formRelated;
+	return (
+		<FormWrapper className={className} onSubmit={onSubmit}>
+			<FormTitle>{title}</FormTitle>
 
-		<Button
-			label={isLoading ? strings.loadingButtonLabel : strings.sendButtonLabel}
-			isFullWidth
-			buttonSize='small'
-			type='submit'
-			disabled={isLoading}
-		/>
-		{isServerError && <ErrorMessage>{serverError?.toString()}</ErrorMessage>}
-	</FormWrapper>
-);
+			<SeparatorLine />
+
+			{subTitle && <FormSubTitle>{subTitle}</FormSubTitle>}
+
+			{formItems && register && (
+				<InputsWrapper>
+					{formItems.map(formItem => {
+						return (
+							<Input
+								key={uuidv4()}
+								title={formItem.title}
+								{...register(formItem.name as Path<T>)}
+								errorMsg={errors && (errors[formItem.name]?.message as string)}
+							/>
+						);
+					})}
+				</InputsWrapper>
+			)}
+
+			<Button
+				label={
+					isLoading ? strings.requestInvitePage.loadingButtonLabel : buttonLabel
+				}
+				isFullWidth
+				buttonSize='small'
+				type='submit'
+				disabled={isLoading}
+			/>
+
+			{isServerError && <ErrorMessage>{serverError?.toString()}</ErrorMessage>}
+		</FormWrapper>
+	);
+};
 
 export default Form;

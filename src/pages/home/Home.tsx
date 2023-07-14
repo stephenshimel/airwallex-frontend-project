@@ -18,24 +18,35 @@ function Home() {
 
 	return (
 		<PageWrapper isActive={!isModalOpen}>
-			<Header title={strings.companyName} />
+			<Header title={strings.homePage.header.title} />
 
 			<PageContent>
-				<AdTitle>{strings.homepageAdTitle}</AdTitle>
-				<AdText>{strings.homepageAdText}</AdText>
+				<AdTitle>{strings.homePage.content.homepageAdTitle}</AdTitle>
+				<AdText>{strings.homePage.content.homepageAdText}</AdText>
 				<Button
-					label={strings.requestInviteButtonText}
+					label={strings.homePage.content.requestInviteButtonText}
 					callback={() => {
 						setIsModalOpen(true);
 					}}
 				/>
 			</PageContent>
 
-			<Footer texts={[strings.madeFrom, strings.copyRight]} />
+			<Footer
+				texts={[
+					strings.homePage.footer.madeFrom,
+					strings.homePage.footer.copyRight,
+				]}
+			/>
 
 			{isModalOpen && (
 				<Modal
-					content={<RequestInviteForm />}
+					content={
+						<RequestInviteForm
+							buttonOnclick={() => {
+								setIsModalOpen(false);
+							}}
+						/>
+					}
 					closeModal={() => {
 						setIsModalOpen(false);
 					}}

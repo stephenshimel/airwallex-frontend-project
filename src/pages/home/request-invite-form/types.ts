@@ -3,3 +3,7 @@ export type TFormFields = {
 	email: string;
 	confirmEmail: string;
 };
+
+export type TRequestInviteForm = {
+	buttonOnclick?: () => void;
+};

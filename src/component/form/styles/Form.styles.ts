@@ -12,6 +12,13 @@ export const FormTitle = styled.h2`
 	font-style: italic;
 `;
 
+export const FormSubTitle = styled.h3`
+	text-align: center;
+	color: grey;
+	font-style: italic;
+	margin-bottom: 70px;
+`;
+
 export const SeparatorLine = styled.div`
 	background-color: black;
 	height: 1px;
