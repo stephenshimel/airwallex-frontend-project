@@ -10,7 +10,8 @@ import {
 } from "./styles/Home.styles";
 import Button from "../../component/button/Button";
 import Modal from "../../component/modal/Modal";
-import Form from "../../component/form/Form";
+
+import RequestInviteForm from "./request-invite-form/RequestInviteForm";
 
 function Home() {
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -34,7 +35,7 @@ function Home() {
 
 			{isModalOpen && (
 				<Modal
-					content={<Form title={strings.requestFormTitle} />}
+					content={<RequestInviteForm />}
 					closeModal={() => {
 						setIsModalOpen(false);
 					}}

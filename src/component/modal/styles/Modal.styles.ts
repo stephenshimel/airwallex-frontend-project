@@ -12,4 +12,5 @@ export const ModalWrapper = styled.div<{ padding?: string }>`
 	max-height: 80vh;
 	border: solid 1px black;
 	padding: ${({ padding = "30px" }) => padding};
+	overflow: scroll;
 `;
