@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Footer from "../../component/footer/Footer";
 import Header from "../../component/header/Header";
-import { strings } from "../../utils/strings";
+import { strings } from "../../constants/strings";
 import {
 	PageContent,
 	PageWrapper,

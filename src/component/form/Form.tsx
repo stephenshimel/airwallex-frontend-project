@@ -12,7 +12,7 @@ import {
 import { TFormProps } from "./types";
 import Button from "../button/Button";
 import Input from "../input/Input";
-import { strings } from "../../utils/strings";
+import { strings } from "../../constants/strings";
 
 const Form = <T extends FieldValues>({
 	title,

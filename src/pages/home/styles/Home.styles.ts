@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { TPageWrapperProps } from "../types";
+import { device } from "../../../constants/breakpoints";
 
 export const PageWrapper = styled.div<TPageWrapperProps>`
 	background-color: ${props => (props.isActive ? "white" : "#bcbec2")};
@@ -18,6 +19,10 @@ export const PageContent = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	@media ${device.mobile} {
+		width: 80%;
+		margin: 0 auto;
+	}
 `;
 export const AdTitle = styled.h1``;
 

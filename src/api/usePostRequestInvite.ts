@@ -4,7 +4,7 @@ import {
 	UseMutationResult,
 	useMutation,
 } from "react-query";
-import axios, { AxiosError } from "axios";
+import axios from "axios";
 
 interface IRequestData {
 	name: string;
@@ -17,10 +17,7 @@ const url =
 const postRequestInviteData = (data: IRequestData) => {
 	return axios
 		.post(url, data)
-		.then(response => {
-			console.log("response.data", response.data);
-			return response.data;
-		})
+		.then(response => response.data)
 		.catch(error => {
 			if (axios.isAxiosError(error) && error.response) {
 				console.error("error returned from server", error.response.status);
@@ -38,10 +35,10 @@ const usePostRequestInviteData = (
 ): UseMutationResult<IRequestData, unknown, IRequestData> => {
 	return useMutation((data: IRequestData) => postRequestInviteData(data), {
 		onSuccess: data => {
-			console.log("Mutation succeeded, returned data: ", data);
+			// console.log("Mutation succeeded, returned data: ", data);
 		},
 		onError: error => {
-			console.error("Mutation failed with error: ", error);
+			// console.error("Mutation failed with error: ", error);
 		},
 		...options,
 	});

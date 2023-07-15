@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { device } from "../../../constants/breakpoints";
 
 export const HeaderContainer = styled.div`
 	display: flex;
@@ -11,6 +12,11 @@ export const HeaderContainer = styled.div`
 	color: grey;
 	position: fixed;
 	width: 100%;
+
+	@media ${device.mobile} {
+		justify-content: center;
+		padding-left: 0;
+	}
 `;
 
 export const Title = styled.h2``;
