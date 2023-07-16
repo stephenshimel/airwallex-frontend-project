@@ -3,7 +3,7 @@ import {
 	UseMutationResult,
 	useMutation,
 } from "react-query";
-import { request } from "../utils/request";
+import { request } from "../../api/request";
 
 interface IRequestData {
 	name: string;

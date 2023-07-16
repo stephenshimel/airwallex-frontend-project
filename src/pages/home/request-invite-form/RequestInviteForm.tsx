@@ -6,7 +6,7 @@ import { strings } from "../../../constants/strings";
 import { TInputProps } from "../../../component/form/types";
 import { TFormFields, TRequestInviteForm } from "./types";
 import { schema } from "./schema";
-import usePostRequestInviteData from "../../../api/usePostRequestInvite";
+import usePostRequestInviteData from "../../../utils/hooks/usePostRequestInvite";
 
 const RequestInviteForm = ({ buttonOnclick }: TRequestInviteForm) => {
 	const requestInviteFormItems: TInputProps[] = [

@@ -85,7 +85,7 @@ describe("RequestInviteForm", () => {
 		fireEvent.click(screen.getByTestId("submit-button"));
 
 		await waitFor(() => {
-			expect(screen.getByText("Sending, pleasae wait...")).toBeInTheDocument();
+			expect(screen.getByText("Sending, please wait...")).toBeInTheDocument();
 		});
 	});
 
