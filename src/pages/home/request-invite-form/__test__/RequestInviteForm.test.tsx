@@ -1,70 +1,198 @@
-// import React from "react";
-// import { render, fireEvent, waitFor, screen } from "@testing-library/react";
+/* eslint-disable testing-library/no-wait-for-multiple-assertions */
+import React from "react";
+import { render, fireEvent, waitFor, screen } from "@testing-library/react";
+import { QueryClient, QueryClientProvider } from "react-query";
+import { rest } from "msw";
+import { setupServer } from "msw/node";
+import RequestInviteForm from "../RequestInviteForm";
 
-// import { QueryClient, QueryClientProvider } from "react-query";
-// import { ReactQueryDevtools } from "react-query/devtools";
-// import RequestInviteForm from "../RequestInviteForm";
+describe("RequestInviteForm", () => {
+	const serverPositive = setupServer(
+		rest.post(
+			"https://l94wc2001h.execute-api.ap-southeast-2.amazonaws.com/prod/fake-auth",
+			async (req, res, ctx) => {
+				console.log("Mock server handler triggered");
 
-// jest.mock("../../../../api/usePostRequestInviteData");
-// import usePostRequestInviteData from "../../../../api/usePostRequestInvite";
+				// parse the request body to get the email
+				const { email } = await req.json();
 
-// const queryClient = new QueryClient();
+				console.log("email!!!", email);
+				// check if the email is "usedemail@airwallex.com"
+				if (email === "usedemail@airwallex.com") {
+					console.log("400 returned!!!");
+					return res(
+						ctx.status(400),
+						ctx.json({ error: "Email is already in use" })
+					);
+				}
 
-// describe("RequestInviteForm component", () => {
-// 	it("renders form with all inputs and a submit button", () => {
-// 		(usePostRequestInviteData as jest.Mock).mockReturnValue({
-// 			mutate: jest.fn(),
-// 			isLoading: false,
-// 			isError: false,
-// 			error: null,
-// 			isSuccess: false,
-// 		});
+				return res(
+					ctx.delay(200),
+					ctx.status(200),
+					ctx.json({ message: "success" })
+				);
+			}
+		)
+	);
 
-// 		render(
-// 			<QueryClientProvider client={queryClient}>
-// 				<RequestInviteForm />
-// 				<ReactQueryDevtools initialIsOpen={false} />
-// 			</QueryClientProvider>
-// 		);
+	beforeAll(() => serverPositive.listen());
+	afterEach(() => serverPositive.resetHandlers());
+	afterAll(() => serverPositive.close());
 
-// 		const nameInput = screen.getByLabelText(/full name/i);
-// 		expect(nameInput).toBeInTheDocument();
+	const queryClient = new QueryClient();
 
-// 		const emailInput = screen.getByLabelText(/email/i);
-// 		expect(emailInput).toBeInTheDocument();
+	// Positive tests:
+	it("renders correctly", () => {
+		render(
+			<QueryClientProvider client={queryClient}>
+				<RequestInviteForm />
+			</QueryClientProvider>
+		);
+		expect(screen.getByText("Request an invite")).toBeInTheDocument();
+		expect(screen.getByPlaceholderText("Full name")).toBeInTheDocument();
+		expect(screen.getByPlaceholderText("Email")).toBeInTheDocument();
+		expect(screen.getByPlaceholderText("Confirm Email")).toBeInTheDocument();
+		expect(screen.getByText("Send")).toBeInTheDocument();
+	});
 
-// 		const confirmEmailInput = screen.getByLabelText(/confirm email/i);
-// 		expect(confirmEmailInput).toBeInTheDocument();
+	it("shows `Sending, please wait...` if submiting the form correctly, before server response arrives", async () => {
+		render(
+			<QueryClientProvider client={queryClient}>
+				<RequestInviteForm />
+			</QueryClientProvider>
+		);
+		fireEvent.change(screen.getByPlaceholderText("Full name"), {
+			target: { value: "Stephen Shi" },
+		});
+		fireEvent.change(screen.getByPlaceholderText("Email"), {
+			target: { value: "test@test.com" },
+		});
+		fireEvent.change(screen.getByPlaceholderText("Confirm Email"), {
+			target: { value: "test@test.com" },
+		});
 
-// 		const submitButton = screen.getByRole("button", { name: /send/i });
-// 		expect(submitButton).toBeInTheDocument();
-// 	});
+		fireEvent.click(screen.getByTestId("submit-button"));
 
-// 	it("submits the form when all fields are filled correctly", async () => {
-// 		render(
-// 			<QueryClientProvider client={queryClient}>
-// 				<RequestInviteForm />
-// 				<ReactQueryDevtools initialIsOpen={false} />
-// 			</QueryClientProvider>
-// 		);
+		await waitFor(() => {
+			expect(screen.getByText("Sending, pleasae wait...")).toBeInTheDocument();
+		});
+	});
 
-// 		const nameInput = screen.getByLabelText(/full name/i);
-// 		const emailInput = screen.getByLabelText(/email/i);
-// 		const confirmEmailInput = screen.getByLabelText(/confirm email/i);
-// 		const submitButton = screen.getByRole("button", { name: /send/i });
+	it("show the success page, if the form is submitted, passed all validation rules, and server response is 200", async () => {
+		render(
+			<QueryClientProvider client={queryClient}>
+				<RequestInviteForm />
+			</QueryClientProvider>
+		);
+		fireEvent.change(screen.getByPlaceholderText("Full name"), {
+			target: { value: "Stephen Shi" },
+		});
+		fireEvent.change(screen.getByPlaceholderText("Email"), {
+			target: { value: "test@test.com" },
+		});
+		fireEvent.change(screen.getByPlaceholderText("Confirm Email"), {
+			target: { value: "test@test.com" },
+		});
 
-// 		fireEvent.change(nameInput, { target: { value: "John Doe" } });
-// 		fireEvent.change(emailInput, { target: { value: "john.doe@example.com" } });
-// 		fireEvent.change(confirmEmailInput, {
-// 			target: { value: "john.doe@example.com" },
-// 		});
+		fireEvent.click(screen.getByTestId("submit-button"));
 
-// 		fireEvent.click(submitButton);
+		await waitFor(
+			() => {
+				expect(screen.getByText("All done!")).toBeInTheDocument();
+				expect(
+					screen.getByText(
+						"You will be one of the first to experience Broccoli & Co. when w launch"
+					)
+				).toBeInTheDocument();
+				expect(screen.getByText("OK")).toBeInTheDocument();
+			},
+			{ timeout: 3000 }
+		);
+	});
 
-// 		await waitFor(() => {
-// 			const successTitle = screen.getByText(/submit success/i);
-// 			expect(successTitle).toBeInTheDocument();
-// 		});
-// 	});
-// });
-export {};
+	// Negative tests:
+
+	it("shows error message when form is submitted with empty fields", async () => {
+		render(
+			<QueryClientProvider client={queryClient}>
+				<RequestInviteForm />
+			</QueryClientProvider>
+		);
+		fireEvent.click(screen.getByTestId("submit-button"));
+		expect(
+			await screen.findByText("Full name is required")
+		).toBeInTheDocument();
+	});
+
+	it("shows error message when name is entered but less than 3 letters", async () => {
+		render(
+			<QueryClientProvider client={queryClient}>
+				<RequestInviteForm />
+			</QueryClientProvider>
+		);
+		fireEvent.change(screen.getByPlaceholderText("Full name"), {
+			target: { value: "S" },
+		});
+		fireEvent.click(screen.getByTestId("submit-button"));
+		expect(
+			await screen.findByText("Full name must be at least 3 characters")
+		).toBeInTheDocument();
+	});
+
+	it("shows error message when email is entered but not a valid email address", async () => {
+		render(
+			<QueryClientProvider client={queryClient}>
+				<RequestInviteForm />
+			</QueryClientProvider>
+		);
+		fireEvent.change(screen.getByPlaceholderText("Email"), {
+			target: { value: "wrong-email" },
+		});
+		fireEvent.click(screen.getByTestId("submit-button"));
+		expect(await screen.findByText("Email is not valid")).toBeInTheDocument();
+	});
+
+	it("shows error message when confirm email field does not match email field", async () => {
+		render(
+			<QueryClientProvider client={queryClient}>
+				<RequestInviteForm />
+			</QueryClientProvider>
+		);
+		fireEvent.change(screen.getByPlaceholderText("Email"), {
+			target: { value: "mock1@airwallex.com" },
+		});
+		fireEvent.change(screen.getByPlaceholderText("Confirm Email"), {
+			target: { value: "mock2@airwallex.com" },
+		});
+		fireEvent.click(screen.getByTestId("submit-button"));
+		expect(await screen.findByText("Emails must match")).toBeInTheDocument();
+	});
+
+	it("show the error message if validation passed but server returns 400", async () => {
+		render(
+			<QueryClientProvider client={queryClient}>
+				<RequestInviteForm />
+			</QueryClientProvider>
+		);
+		fireEvent.change(screen.getByPlaceholderText("Full name"), {
+			target: { value: "Stephen Shi" },
+		});
+		fireEvent.change(screen.getByPlaceholderText("Email"), {
+			target: { value: "usedemail@airwallex.com" },
+		});
+		fireEvent.change(screen.getByPlaceholderText("Confirm Email"), {
+			target: { value: "usedemail@airwallex.com" },
+		});
+
+		fireEvent.click(screen.getByTestId("submit-button"));
+
+		await waitFor(
+			() => {
+				expect(
+					screen.getByText("Request failed with status code 400")
+				).toBeInTheDocument();
+			},
+			{ timeout: 3000 }
+		);
+	});
+});
