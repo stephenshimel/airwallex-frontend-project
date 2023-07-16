@@ -1,8 +1,6 @@
-import { FieldError } from "react-hook-form";
-
 export type TInputProps = {
-	name: string;
-	title: string;
+	name?: string;
+	placeholder?: string;
 	className?: string;
 	errorMsg?: string;
 };

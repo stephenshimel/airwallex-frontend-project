@@ -3,15 +3,10 @@ import { TInputProps } from "./types";
 import { StyledInput } from "./styles/Input.styles";
 
 const Input = React.forwardRef<HTMLInputElement, TInputProps>(
-	({ title, className, errorMsg, ...restProps }, ref): ReactElement => (
+	({ errorMsg, name = "", ...restProps }, ref): ReactElement => (
 		<>
-			<StyledInput
-				ref={ref}
-				className={className}
-				placeholder={title}
-				{...restProps}
-			></StyledInput>
-			{errorMsg && <div>{errorMsg}</div>}
+			<StyledInput ref={ref} name={name} {...restProps}></StyledInput>
+			{errorMsg && <p>{errorMsg}</p>}
 		</>
 	)
 );

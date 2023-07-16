@@ -25,14 +25,14 @@ function Home() {
 				<AdText>{strings.homePage.content.homepageAdText}</AdText>
 				<Button
 					label={strings.homePage.content.requestInviteButtonText}
-					callback={() => {
+					onClick={() => {
 						setIsModalOpen(true);
 					}}
 				/>
 			</PageContent>
 
 			<Footer
-				texts={[
+				content={[
 					strings.homePage.footer.madeFrom,
 					strings.homePage.footer.copyRight,
 				]}

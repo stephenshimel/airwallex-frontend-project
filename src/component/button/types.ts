@@ -2,7 +2,7 @@ export type TButtonSize = "small" | "regular" | "large";
 
 export type TButtonProps = {
 	label: string;
-	callback?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+	onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 	className?: string;
 	isFullWidth?: boolean;
 	buttonSize?: TButtonSize;

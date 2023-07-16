@@ -1,4 +1,4 @@
 export type TFooterProps = {
-	texts: string[];
+	content?: string[];
 	className?: string;
 };

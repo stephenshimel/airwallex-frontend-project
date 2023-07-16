@@ -30,22 +30,23 @@ const Form = <T extends FieldValues>({
 		errors,
 		register,
 	} = formRelated;
+
 	return (
 		<FormWrapper className={className} onSubmit={onSubmit}>
 			<FormTitle>{title}</FormTitle>
 
-			<SeparatorLine />
+			<SeparatorLine data-testid='separator-line' />
 
 			{subTitle && <FormSubTitle>{subTitle}</FormSubTitle>}
 
-			{formItems && register && (
+			{formItems && (
 				<InputsWrapper>
 					{formItems.map(formItem => {
 						return (
 							<Input
 								key={uuidv4()}
-								title={formItem.title}
-								{...register(formItem.name as Path<T>)}
+								placeholder={formItem.title}
+								{...(register ? register(formItem.name as Path<T>) : {})}
 								errorMsg={errors && (errors[formItem.name]?.message as string)}
 							/>
 						);
@@ -61,6 +62,7 @@ const Form = <T extends FieldValues>({
 				buttonSize='small'
 				type='submit'
 				disabled={isLoading}
+				data-testid='submit-button'
 			/>
 
 			{isServerError && <ErrorMessage>{serverError?.toString()}</ErrorMessage>}
