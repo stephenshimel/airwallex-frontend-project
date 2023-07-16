@@ -1,12 +1,12 @@
 import React from "react";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useForm, SubmitHandler } from "react-hook-form";
 import Form from "../../../component/form/Form";
 import { strings } from "../../../constants/strings";
 import { TInputProps } from "../../../component/form/types";
 import { TFormFields, TRequestInviteForm } from "./types";
 import { schema } from "./schema";
 import usePostRequestInviteData from "../../../api/usePostRequestInvite";
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm, SubmitHandler } from "react-hook-form";
 
 const RequestInviteForm = ({ buttonOnclick }: TRequestInviteForm) => {
 	const requestInviteFormItems: TInputProps[] = [

@@ -1,10 +1,9 @@
-// api.ts
 import {
 	UseMutationOptions,
 	UseMutationResult,
 	useMutation,
 } from "react-query";
-import axios from "axios";
+import { request } from "../utils/request";
 
 interface IRequestData {
 	name: string;
@@ -14,34 +13,21 @@ interface IRequestData {
 const url =
 	"https://l94wc2001h.execute-api.ap-southeast-2.amazonaws.com/prod/fake-auth";
 
-const postRequestInviteData = (data: IRequestData) => {
-	return axios
-		.post(url, data)
-		.then(response => response.data)
-		.catch(error => {
-			if (axios.isAxiosError(error) && error.response) {
-				console.error("error returned from server", error.response.status);
-				throw error;
-			} else {
-				console.error("request didn't arrive at server properly", error);
-				throw error;
-			}
-		});
-};
-
-// will catch error and wrap in the error property
+/**
+ * @example { name: "Test Name", email: "test@airwallex.com" } => 200
+ * @example { name: "Test Name", email: "usedemail@airwallex.com" } => 400
+ */
 const usePostRequestInviteData = (
 	options?: UseMutationOptions<IRequestData, unknown, IRequestData>
 ): UseMutationResult<IRequestData, unknown, IRequestData> => {
-	return useMutation((data: IRequestData) => postRequestInviteData(data), {
-		onSuccess: data => {
-			// console.log("Mutation succeeded, returned data: ", data);
-		},
-		onError: error => {
-			// console.error("Mutation failed with error: ", error);
-		},
-		...options,
-	});
+	return useMutation(
+		(data: IRequestData) =>
+			request<IRequestData>({
+				data,
+				url,
+			}),
+		options
+	);
 };
 
 export default usePostRequestInviteData;
