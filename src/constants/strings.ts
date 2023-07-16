@@ -17,7 +17,7 @@ export const strings = {
 	requestInvitePage: {
 		requestFormTitle: "Request an invite",
 		sendButtonLabel: "Send",
-		loadingButtonLabel: "Sending, pleasae wait...",
+		loadingButtonLabel: "Sending, please wait...",
 	},
 	submitSuccessPage: {
 		title: "All done!",

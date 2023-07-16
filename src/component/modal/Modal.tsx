@@ -21,7 +21,12 @@ const Modal = ({
 	useEventListener("mousedown", handleClickOutside);
 
 	return (
-		<ModalWrapper ref={modalRef} padding={padding} className={className}>
+		<ModalWrapper
+			ref={modalRef}
+			padding={padding}
+			className={className}
+			data-testid='modal'
+		>
 			{content}
 		</ModalWrapper>
 	);

@@ -20,7 +20,7 @@ function Home() {
 		<PageWrapper isActive={!isModalOpen}>
 			<Header title={strings.homePage.header.title} />
 
-			<PageContent>
+			<PageContent data-testid='home-body'>
 				<AdTitle>{strings.homePage.content.homepageAdTitle}</AdTitle>
 				<AdText>{strings.homePage.content.homepageAdText}</AdText>
 				<Button

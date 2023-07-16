@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { device } from "../../../constants/breakpoints";
 
-export const HeaderContainer = styled.div`
+export const HeaderContainer = styled.header`
 	display: flex;
 	align-items: center;
 	justify-content: start;

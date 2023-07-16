@@ -11,6 +11,7 @@ export const ModalWrapper = styled.div<{ padding?: string }>`
 	border: solid 1px black;
 	padding: ${({ padding = "30px" }) => padding};
 	overflow: scroll;
+	max-height: 90%;
 	@media ${device.mobile} {
 		width: 80%;
 	}

@@ -4,7 +4,7 @@ exports[`Home matches the snapshot 1`] = `
 <div
   className="css-wno8gi"
 >
-  <div
+  <header
     className="css-626cmc"
     data-testid="header-wrapper"
   >
@@ -13,9 +13,10 @@ exports[`Home matches the snapshot 1`] = `
     >
       BROCCOLI & CO.
     </h2>
-  </div>
+  </header>
   <div
     className="css-ovb8ba"
+    data-testid="home-body"
   >
     <h1
       className="css-0"
@@ -35,7 +36,7 @@ exports[`Home matches the snapshot 1`] = `
       Request an invite
     </button>
   </div>
-  <div
+  <footer
     className="css-ca7i3p"
     data-testid="footer-wrapper"
   >
@@ -49,6 +50,6 @@ exports[`Home matches the snapshot 1`] = `
     >
       © 2016 Broccoli & Co. All rights reserved
     </p>
-  </div>
+  </footer>
 </div>
 `;
