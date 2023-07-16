@@ -10,7 +10,6 @@ import {
 } from "./styles/Home.styles";
 import Button from "../../component/button/Button";
 import Modal from "../../component/modal/Modal";
-
 import RequestInviteForm from "./request-invite-form/RequestInviteForm";
 
 function Home() {

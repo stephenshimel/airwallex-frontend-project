@@ -94,3 +94,6 @@ $ yarn e2e
 2. RequestInviteForm handles the main business logic including form management, validation, submit function etc. Whole RequestInviteForm component is passed into Modal reusable component as a props, so that these business logic is decoupled from Modal component.
 3. Success page and the form share similar design therefore they are both using Form reusable component, just different props.
 4. Modal component handles its open/close functionality (including clicking on area outside the Modal to close it). So that if in the future another modal is required, can simply reuse it.
+5. All the styled components have expose a className props, allowing future consumer customize styles
+6. Emotion package, instead of a css file, is used for styling. As javascript give us more convenience to customize dynamic style based on states.
+7. Media query is used to ensure the app runs smoothly on all screen sizes. E2E test has tested responsive design.
