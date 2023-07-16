@@ -60,3 +60,24 @@ $ yarn e2e
 ├── yarn.lock
 └── README.md
 ```
+
+## Main tech stack used in app:
+
+1. Used Create react app with Typescript to initialize the app.
+2. React query is used for state management and wrapping api call
+3. Axios is used to call api
+4. Emotion is used for styling
+5. React hook form is used for form data management.
+6. Yup is used for form validation schema
+7. Jest and React testing library are used for unit tests
+8. Cypress is used for E2E Tests
+9. react-test-renderer is used for snapshot tests
+10. msw is used to mock server in the test
+11. antd is used to show server error message
+
+## Test coverage:
+
+1. Unit tests are added to ALL the reusable components: Header, Footer, Modal, Form, Input, Button etc..
+2. Integration test is added to RequestInviteForm component. As this component handled the core logic of form and api call.
+3. Snapshot test are added to the home page and the modal
+4. E2E test using cypress is implemented. Video attached above
