@@ -1,5 +1,7 @@
+/* eslint-disable testing-library/render-result-naming-convention */
 /* eslint-disable testing-library/no-wait-for-multiple-assertions */
 import React from "react";
+import renderer from "react-test-renderer";
 import { render, fireEvent, waitFor, screen } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { rest } from "msw";
@@ -55,6 +57,15 @@ describe("RequestInviteForm", () => {
 		expect(screen.getByText("Send")).toBeInTheDocument();
 	});
 
+	it("initial status matches the snapshot", () => {
+		const tree = render(
+			<QueryClientProvider client={queryClient}>
+				<RequestInviteForm />
+			</QueryClientProvider>
+		);
+		expect(tree).toMatchSnapshot();
+	});
+
 	it("shows `Sending, please wait...` if submiting the form correctly, before server response arrives", async () => {
 		render(
 			<QueryClientProvider client={queryClient}>
@@ -78,8 +89,8 @@ describe("RequestInviteForm", () => {
 		});
 	});
 
-	it("show the success page, if the form is submitted, passed all validation rules, and server response is 200", async () => {
-		render(
+	it("shows the success page and matches snapshot, if the form is submitted, passed all validation rules, and server response is 200", async () => {
+		const tree = render(
 			<QueryClientProvider client={queryClient}>
 				<RequestInviteForm />
 			</QueryClientProvider>
@@ -108,6 +119,8 @@ describe("RequestInviteForm", () => {
 			},
 			{ timeout: 3000 }
 		);
+
+		expect(tree).toMatchSnapshot();
 	});
 
 	// Negative tests:

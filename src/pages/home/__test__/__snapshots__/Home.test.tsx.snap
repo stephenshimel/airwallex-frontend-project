@@ -1,0 +1,54 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home matches the snapshot 1`] = `
+<div
+  className="css-wno8gi"
+>
+  <div
+    className="css-626cmc"
+    data-testid="header-wrapper"
+  >
+    <h2
+      className="css-0"
+    >
+      BROCCOLI & CO.
+    </h2>
+  </div>
+  <div
+    className="css-ovb8ba"
+  >
+    <h1
+      className="css-0"
+    >
+      A better way to enjoy every day
+    </h1>
+    <h4
+      className="css-0"
+    >
+      Be the first to know when we launch
+    </h4>
+    <button
+      className="css-p4rh1w"
+      disabled={false}
+      onClick={[Function]}
+    >
+      Request an invite
+    </button>
+  </div>
+  <div
+    className="css-ca7i3p"
+    data-testid="footer-wrapper"
+  >
+    <p
+      className="css-eh7lb7"
+    >
+      Made with ♥ in Melbourne
+    </p>
+    <p
+      className="css-eh7lb7"
+    >
+      © 2016 Broccoli & Co. All rights reserved
+    </p>
+  </div>
+</div>
+`;
