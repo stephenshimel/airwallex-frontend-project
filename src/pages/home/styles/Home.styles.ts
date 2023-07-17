@@ -1,6 +1,7 @@
 import styled from "@emotion/styled";
 import { TPageWrapperProps } from "../types";
 import { device } from "../../../constants/breakpoints";
+import { colors } from "../../../constants/color";
 
 export const PageWrapper = styled.div<TPageWrapperProps>`
 	background-color: ${props => (props.isActive ? "white" : "#bcbec2")};
@@ -11,7 +12,7 @@ export const PageWrapper = styled.div<TPageWrapperProps>`
 
 export const PageContent = styled.div`
 	width: 100%;
-	color: grey;
+	color: ${colors.lightGrey};
 	padding: 80px 0;
 	flex-grow: 1;
 	background-color: inherit;

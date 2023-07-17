@@ -5,7 +5,7 @@ exports[`Home matches the snapshot 1`] = `
   className="css-wno8gi"
 >
   <header
-    className="css-626cmc"
+    className="css-izscyd"
     data-testid="header-wrapper"
   >
     <h2
@@ -15,7 +15,7 @@ exports[`Home matches the snapshot 1`] = `
     </h2>
   </header>
   <div
-    className="css-ovb8ba"
+    className="css-xjliy3"
     data-testid="home-body"
   >
     <h1
@@ -29,7 +29,7 @@ exports[`Home matches the snapshot 1`] = `
       Be the first to know when we launch
     </h4>
     <button
-      className="css-c60iib"
+      className="css-9vvphc"
       disabled={false}
       onClick={[Function]}
     >
@@ -37,7 +37,7 @@ exports[`Home matches the snapshot 1`] = `
     </button>
   </div>
   <footer
-    className="css-ca7i3p"
+    className="css-1cahot1"
     data-testid="footer-wrapper"
   >
     <p

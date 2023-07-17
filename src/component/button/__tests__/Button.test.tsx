@@ -3,6 +3,7 @@ import { render, fireEvent, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Button from "../Button";
 import { TButtonProps, TButtonSize } from "../types";
+import { colors } from "../../../constants/color";
 
 describe("Button component", () => {
 	const testProps: TButtonProps = {
@@ -41,8 +42,8 @@ describe("Button component", () => {
 		const button = screen.getByRole("button", { name: /test button/i });
 
 		expect(button).toBeDisabled();
-		expect(button).toHaveStyle({ color: "#cccbca" }); // Check for disabled color
-		expect(button).toHaveStyle({ borderColor: "#cccbca" }); // Check for disabled border color
+		expect(button).toHaveStyle({ color: colors.grey }); // Check for disabled color
+		expect(button).toHaveStyle({ borderColor: colors.grey }); // Check for disabled border color
 	});
 
 	it("doesn't call the onClick function on click if disabled is true", () => {
@@ -90,14 +91,14 @@ describe("Button component", () => {
 		const { rerender } = render(<Button {...testProps} disabled={true} />);
 		const button = screen.getByRole("button", { name: /test button/i });
 		expect(button).toHaveStyle({
-			color: "#cccbca",
-			borderColor: "#cccbca",
+			color: colors.grey,
+			borderColor: colors.grey,
 		});
 
 		rerender(<Button {...testProps} disabled={false} />);
 		expect(button).toHaveStyle({
-			color: "grey",
-			borderColor: "black",
+			color: colors.lightGrey,
+			borderColor: colors.black,
 		});
 	});
 });

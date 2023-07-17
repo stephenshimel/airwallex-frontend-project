@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { TStyledButtonProps } from "../types";
+import { colors } from "../../../constants/color";
 
 const buttonSizeToPadding = {
 	small: "8px 20px",
@@ -11,9 +12,9 @@ export const StyledButton = styled.button<TStyledButtonProps>`
 	background-color: transparent;
 	font-size: 17px;
 	padding: ${({ buttonSize = "regular" }) => buttonSizeToPadding[buttonSize]};
-	color: ${props => (props.disabled ? "#cccbca" : "grey")};
+	color: ${props => (props.disabled ? colors.grey : colors.lightGrey)};
 	border: 1px solid;
-	border-color: ${props => (props.disabled ? "#cccbca" : "black")};
+	border-color: ${props => (props.disabled ? colors.grey : colors.black)};
 	cursor: pointer;
 	display: block;
 	margin: 0 auto;

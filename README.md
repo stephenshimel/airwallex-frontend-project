@@ -2,13 +2,13 @@
 
 ## Getting Started
 
-Install dependencies,
+Install dependencies:
 
 ```bash
 $ yarn install
 ```
 
-Start the dev server,
+Start the dev server:
 
 ```bash
 $ yarn start
@@ -26,6 +26,7 @@ For e2e tests, please start the dev server first, then run:
 $ yarn e2e
 ```
 
+E2e test demo:
 ![Animated GIF](./cypress/videos/app.spec.cy.ts.gif)
 
 ## Folder structure
@@ -36,29 +37,29 @@ $ yarn e2e
 │   └── e2e                                   # e2e tests
 │       └── app.spec.cy.ts
 ├── src
-│   ├── components                            # reusable components
+│   ├── components                            # reusable components: decoupled from business logic
 │   │   ├── button
 │   │   ├── header
 │   │   ├── footer
-│   │   ├── modal                             # reusable Modal component, decoupled from business logic
-│   │   └── form                              # reusable Form component, decoupled from business logic
+│   │   ├── modal
+│   │   └── form
 │   ├── constants
-│   │   ├── keypoints.ts                      # screen sizes for responsive design
-│   │   ├── strings                           # centralized all the strings used in the app
+│   │   ├── breakpoints.ts                    # screen sizes for responsive design
+│   │   ├── strings                           # centralized all the strings
+│   │   └── colors.ts                         # centralized all the color tokens
 │   ├── pages
 │   │   ├── home.ts                           # app entry
 │   │   └── request-invite-form.ts            # handle main logic of this form, passed in Modal as a props to render
 │   ├── api
-│   │   ├── request.ts                        # api call method
+│   │   └── request.ts                        # api call method
 │   └── utils
 │   │   ├── hooks
-│   │   │     └── usePostRequestInvite.ts     # customized hook function, wrapping api method into react query
-│   │   │    └── useEventListener.tsx         # hook to add eventListener to an element
+│   │   │     ├── usePostRequestInvite.ts     # customized hook function, wrapping api method into react query
+│   │   │     └── useEventListener.tsx        # hook to add eventListener to an element
 │   │   └───ErrorBoundary.ts                  # ErrorBoundary component, used to catch error
 ├── tsconfig.json
 ├── cypress.json                              # e2e config
 ├── package.json
-├── yarn.lock
 └── README.md
 ```
 

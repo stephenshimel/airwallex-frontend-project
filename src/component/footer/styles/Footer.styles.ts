@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import { colors } from "../../../constants/color";
 
 export const FooterContainer = styled.footer`
 	display: flex;
@@ -8,7 +9,7 @@ export const FooterContainer = styled.footer`
 	height: 80px;
 	background-color: inherit;
 	border-top: 1px solid black;
-	color: grey;
+	color: ${colors.lightGrey};
 	position: fixed;
 	width: 100%;
 	bottom: 0;

@@ -9,12 +9,12 @@ Object {
         class="css-0"
       >
         <h2
-          class="css-18dyf6a"
+          class="css-ks66se"
         >
           Request an invite
         </h2>
         <div
-          class="css-108trlw"
+          class="css-wfw5i"
           data-testid="separator-line"
         />
         <div
@@ -37,7 +37,7 @@ Object {
           />
         </div>
         <button
-          class="css-49zh02"
+          class="css-4b54l1"
           data-testid="submit-button"
           type="submit"
         >
@@ -51,12 +51,12 @@ Object {
       class="css-0"
     >
       <h2
-        class="css-18dyf6a"
+        class="css-ks66se"
       >
         Request an invite
       </h2>
       <div
-        class="css-108trlw"
+        class="css-wfw5i"
         data-testid="separator-line"
       />
       <div
@@ -79,7 +79,7 @@ Object {
         />
       </div>
       <button
-        class="css-49zh02"
+        class="css-4b54l1"
         data-testid="submit-button"
         type="submit"
       >
@@ -150,21 +150,21 @@ Object {
         class="css-0"
       >
         <h2
-          class="css-18dyf6a"
+          class="css-ks66se"
         >
           All done!
         </h2>
         <div
-          class="css-108trlw"
+          class="css-wfw5i"
           data-testid="separator-line"
         />
         <h3
-          class="css-bao8lp"
+          class="css-1yateql"
         >
           You will be one of the first to experience Broccoli & Co. when w launch
         </h3>
         <button
-          class="css-49zh02"
+          class="css-4b54l1"
           data-testid="submit-button"
           type="submit"
         >
@@ -178,21 +178,21 @@ Object {
       class="css-0"
     >
       <h2
-        class="css-18dyf6a"
+        class="css-ks66se"
       >
         All done!
       </h2>
       <div
-        class="css-108trlw"
+        class="css-wfw5i"
         data-testid="separator-line"
       />
       <h3
-        class="css-bao8lp"
+        class="css-1yateql"
       >
         You will be one of the first to experience Broccoli & Co. when w launch
       </h3>
       <button
-        class="css-49zh02"
+        class="css-4b54l1"
         data-testid="submit-button"
         type="submit"
       >

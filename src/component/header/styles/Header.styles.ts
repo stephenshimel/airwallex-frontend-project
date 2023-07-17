@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { device } from "../../../constants/breakpoints";
+import { colors } from "../../../constants/color";
 
 export const HeaderContainer = styled.header`
 	display: flex;
@@ -9,7 +10,7 @@ export const HeaderContainer = styled.header`
 	background-color: inherit;
 	border-bottom: 1px solid black;
 	padding-left: 150px;
-	color: grey;
+	color: ${colors.lightGrey};
 	position: fixed;
 	width: 100%;
 
