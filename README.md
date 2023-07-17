@@ -75,7 +75,7 @@ E2e test demo:
 8. Cypress is used for E2E Tests
 9. react-test-renderer is used for snapshot tests
 10. msw is used to mock server in the test
-11. antd is used to show server error message
+11. antd notification component is used to show server error message
 
 ## Test coverage:
 
