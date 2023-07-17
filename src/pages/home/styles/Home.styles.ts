@@ -11,7 +11,7 @@ export const PageWrapper = styled.div<TPageWrapperProps>`
 `;
 
 export const PageContent = styled.div`
-	width: 100%;
+	/* width: 100%; */
 	color: ${colors.lightGrey};
 	padding: 80px 0;
 	flex-grow: 1;
@@ -20,11 +20,21 @@ export const PageContent = styled.div`
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	width: 400px;
+	margin: 0 auto;
+
 	@media ${device.mobile} {
 		width: 80%;
-		margin: 0 auto;
 	}
 `;
-export const AdTitle = styled.h1``;
+export const AdTitle = styled.h1`
+	font-size: 50px;
+	text-align: center;
+	margin: 0;
+`;
 
-export const AdText = styled.h4``;
+export const AdText = styled.h4`
+	font-size: 20px;
+	font-weight: 400;
+	margin-bottom: 50px;
+`;

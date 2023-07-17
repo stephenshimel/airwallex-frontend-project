@@ -15,16 +15,21 @@ exports[`Home matches the snapshot 1`] = `
     </h2>
   </header>
   <div
-    className="css-xjliy3"
+    className="css-11ooj3h"
     data-testid="home-body"
   >
     <h1
-      className="css-0"
+      className="css-1qtzou5"
     >
-      A better way to enjoy every day
+      A better way
+    </h1>
+    <h1
+      className="css-1qtzou5"
+    >
+      to enjoy every day.
     </h1>
     <h4
-      className="css-0"
+      className="css-1bcphut"
     >
       Be the first to know when we launch
     </h4>

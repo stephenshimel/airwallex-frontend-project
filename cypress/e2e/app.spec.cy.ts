@@ -8,7 +8,11 @@ describe("The App", () => {
 		cy.get("footer").should("contain", strings.homePage.footer.copyRight);
 		cy.get('[data-testid="home-body"]').should(
 			"contain",
-			strings.homePage.content.homepageAdTitle
+			strings.homePage.content.homepageAdTitle1
+		);
+		cy.get('[data-testid="home-body"]').should(
+			"contain",
+			strings.homePage.content.homepageAdTitle2
 		);
 		cy.get('[data-testid="home-body"]').should(
 			"contain",

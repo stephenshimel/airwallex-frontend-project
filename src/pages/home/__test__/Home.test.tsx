@@ -14,7 +14,10 @@ describe("Home", () => {
 		// Check if the static elements are correctly rendered
 		expect(screen.getByText(strings.homePage.header.title)).toBeInTheDocument();
 		expect(
-			screen.getByText(strings.homePage.content.homepageAdTitle)
+			screen.getByText(strings.homePage.content.homepageAdTitle1)
+		).toBeInTheDocument();
+		expect(
+			screen.getByText(strings.homePage.content.homepageAdTitle2)
 		).toBeInTheDocument();
 		expect(
 			screen.getByText(strings.homePage.content.homepageAdText)

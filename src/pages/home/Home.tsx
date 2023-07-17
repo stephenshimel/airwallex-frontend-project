@@ -30,7 +30,9 @@ function Home() {
 			<Header title={strings.homePage.header.title} />
 
 			<PageContent data-testid='home-body'>
-				<AdTitle>{strings.homePage.content.homepageAdTitle}</AdTitle>
+				<AdTitle>{strings.homePage.content.homepageAdTitle1}</AdTitle>
+				<AdTitle>{strings.homePage.content.homepageAdTitle2}</AdTitle>
+
 				<AdText>{strings.homePage.content.homepageAdText}</AdText>
 				<Button
 					label={strings.homePage.content.requestInviteButtonText}

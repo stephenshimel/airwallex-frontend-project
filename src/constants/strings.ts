@@ -9,7 +9,8 @@ export const strings = {
 			copyRight: `© 2016 Broccoli & Co. All rights reserved`,
 		},
 		content: {
-			homepageAdTitle: "A better way to enjoy every day",
+			homepageAdTitle1: "A better way",
+			homepageAdTitle2: "to enjoy every day.",
 			homepageAdText: "Be the first to know when we launch",
 			requestInviteButtonText: "Request an invite",
 		},
