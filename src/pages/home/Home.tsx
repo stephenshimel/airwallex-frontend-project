@@ -47,16 +47,15 @@ function Home() {
 				]}
 			/>
 
-			{isModalOpen && (
-				<ErrorBoundary>
-					<Modal
-						content={<RequestInviteForm closeModal={closeModal} />}
-						closeModal={() => {
-							setIsModalOpen(false);
-						}}
-					/>
-				</ErrorBoundary>
-			)}
+			<ErrorBoundary>
+				<Modal
+					content={<RequestInviteForm closeModal={closeModal} />}
+					closeModal={() => {
+						setIsModalOpen(false);
+					}}
+					isModalOpen={isModalOpen}
+				/>
+			</ErrorBoundary>
 		</PageWrapper>
 	);
 }

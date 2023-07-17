@@ -5,4 +5,5 @@ export type TModalProps = {
 	closeModal: Function;
 	padding?: string;
 	className?: string;
+	isModalOpen: boolean;
 };

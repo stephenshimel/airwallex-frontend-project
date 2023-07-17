@@ -10,6 +10,7 @@ describe("Modal component", () => {
 	const testProps: TModalProps = {
 		content: contentMock,
 		closeModal: closeModalMock,
+		isModalOpen: true,
 	};
 
 	beforeEach(() => {

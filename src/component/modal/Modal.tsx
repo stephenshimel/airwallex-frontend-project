@@ -9,6 +9,7 @@ const Modal = ({
 	closeModal,
 	padding,
 	className,
+	isModalOpen,
 }: TModalProps): ReactElement => {
 	const modalRef = useRef<HTMLDivElement | null>(null);
 
@@ -20,7 +21,7 @@ const Modal = ({
 
 	useEventListener("mousedown", handleClickOutside);
 
-	return (
+	return isModalOpen ? (
 		<ModalWrapper
 			ref={modalRef}
 			padding={padding}
@@ -29,6 +30,8 @@ const Modal = ({
 		>
 			{content}
 		</ModalWrapper>
+	) : (
+		<></>
 	);
 };
 
