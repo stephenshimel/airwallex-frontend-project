@@ -112,7 +112,7 @@ describe("The App", () => {
 		);
 
 		cy.get('[data-testid="modal"]').within(() => {
-			cy.get('input[placeholder="Full name"]').should("exist");
+			cy.get('input[placeholder="Full Name"]').should("exist");
 		});
 		cy.get('[data-testid="modal"]').within(() => {
 			cy.get('input[placeholder="Email"]').should("exist");
@@ -139,11 +139,11 @@ describe("The App", () => {
 			.contains(strings.requestInvitePage.sendButtonLabel)
 			.click();
 
-		cy.get('[data-testid="modal"]').should("contain", "Full name is required");
+		cy.get('[data-testid="modal"]').should("contain", "Full Name is required");
 		cy.get('[data-testid="modal"]').should("contain", "Email is required");
 
 		// click on Send button with a name less than 3 letters
-		cy.get('input[placeholder="Full name"]').type("S");
+		cy.get('input[placeholder="Full Name"]').type("S");
 
 		cy.get("button")
 			.contains(strings.requestInvitePage.sendButtonLabel)
@@ -151,7 +151,7 @@ describe("The App", () => {
 
 		cy.get('[data-testid="modal"]').should(
 			"contain",
-			"Full name must be at least 3 characters"
+			"Full Name must be at least 3 characters"
 		);
 
 		// click on Send button with an email which is not in email format
@@ -181,7 +181,7 @@ describe("The App", () => {
 		cy.get("button")
 			.contains(strings.homePage.content.requestInviteButtonText)
 			.click();
-		cy.get('input[placeholder="Full name"]').type("Stephen");
+		cy.get('input[placeholder="Full Name"]').type("Stephen");
 		cy.get('input[placeholder="Email"]').type("usedemail@airwallex.com");
 		cy.get('input[placeholder="Confirm Email"]').type(
 			"usedemail@airwallex.com"
@@ -208,7 +208,7 @@ describe("The App", () => {
 		cy.get("button")
 			.contains(strings.homePage.content.requestInviteButtonText)
 			.click();
-		cy.get('input[placeholder="Full name"]').type("Stephen");
+		cy.get('input[placeholder="Full Name"]').type("Stephen");
 		cy.get('input[placeholder="Email"]').type("Stephen@airwallex.com");
 		cy.get('input[placeholder="Confirm Email"]').type("Stephen@airwallex.com");
 		cy.get("button")

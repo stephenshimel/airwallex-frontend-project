@@ -29,7 +29,7 @@ exports[`Home matches the snapshot 1`] = `
       Be the first to know when we launch
     </h4>
     <button
-      className="css-p4rh1w"
+      className="css-c60iib"
       disabled={false}
       onClick={[Function]}
     >

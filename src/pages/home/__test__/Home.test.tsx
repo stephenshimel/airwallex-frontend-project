@@ -37,7 +37,7 @@ describe("Home", () => {
 		);
 
 		// Now the modal should be open, and the RequestInviteForm should be rendered
-		expect(screen.getByPlaceholderText("Full name")).toBeInTheDocument();
+		expect(screen.getByPlaceholderText("Full Name")).toBeInTheDocument();
 		expect(screen.getByPlaceholderText("Email")).toBeInTheDocument();
 		expect(screen.getByPlaceholderText("Confirm Email")).toBeInTheDocument();
 		expect(screen.getByText("Send")).toBeInTheDocument();

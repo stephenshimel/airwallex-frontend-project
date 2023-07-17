@@ -70,5 +70,4 @@ const Form = <T extends FieldValues>({
 	);
 };
 
-// don't wrap Form in React.memo as it does not support component with a generic type.
 export default Form;

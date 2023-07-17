@@ -51,7 +51,7 @@ describe("RequestInviteForm", () => {
 			</QueryClientProvider>
 		);
 		expect(screen.getByText("Request an invite")).toBeInTheDocument();
-		expect(screen.getByPlaceholderText("Full name")).toBeInTheDocument();
+		expect(screen.getByPlaceholderText("Full Name")).toBeInTheDocument();
 		expect(screen.getByPlaceholderText("Email")).toBeInTheDocument();
 		expect(screen.getByPlaceholderText("Confirm Email")).toBeInTheDocument();
 		expect(screen.getByText("Send")).toBeInTheDocument();
@@ -72,7 +72,7 @@ describe("RequestInviteForm", () => {
 				<RequestInviteForm />
 			</QueryClientProvider>
 		);
-		fireEvent.change(screen.getByPlaceholderText("Full name"), {
+		fireEvent.change(screen.getByPlaceholderText("Full Name"), {
 			target: { value: "Stephen Shi" },
 		});
 		fireEvent.change(screen.getByPlaceholderText("Email"), {
@@ -95,7 +95,7 @@ describe("RequestInviteForm", () => {
 				<RequestInviteForm />
 			</QueryClientProvider>
 		);
-		fireEvent.change(screen.getByPlaceholderText("Full name"), {
+		fireEvent.change(screen.getByPlaceholderText("Full Name"), {
 			target: { value: "Stephen Shi" },
 		});
 		fireEvent.change(screen.getByPlaceholderText("Email"), {
@@ -133,7 +133,7 @@ describe("RequestInviteForm", () => {
 		);
 		fireEvent.click(screen.getByTestId("submit-button"));
 		expect(
-			await screen.findByText("Full name is required")
+			await screen.findByText("Full Name is required")
 		).toBeInTheDocument();
 	});
 
@@ -143,12 +143,12 @@ describe("RequestInviteForm", () => {
 				<RequestInviteForm />
 			</QueryClientProvider>
 		);
-		fireEvent.change(screen.getByPlaceholderText("Full name"), {
+		fireEvent.change(screen.getByPlaceholderText("Full Name"), {
 			target: { value: "S" },
 		});
 		fireEvent.click(screen.getByTestId("submit-button"));
 		expect(
-			await screen.findByText("Full name must be at least 3 characters")
+			await screen.findByText("Full Name must be at least 3 characters")
 		).toBeInTheDocument();
 	});
 
@@ -187,7 +187,7 @@ describe("RequestInviteForm", () => {
 				<RequestInviteForm />
 			</QueryClientProvider>
 		);
-		fireEvent.change(screen.getByPlaceholderText("Full name"), {
+		fireEvent.change(screen.getByPlaceholderText("Full Name"), {
 			target: { value: "Stephen Shi" },
 		});
 		fireEvent.change(screen.getByPlaceholderText("Email"), {

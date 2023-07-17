@@ -51,9 +51,10 @@ $ yarn e2e
 │   ├── api
 │   │   ├── request.ts                        # api call method
 │   └── utils
-│   │   └── hooks
-│   │        └── usePostRequestInvite.ts      # customized hook function, wrapping api method into react query
-│   │        └── useEventListener.tsx         # hook to add eventListener to an element
+│   │   ├── hooks
+│   │   │     └── usePostRequestInvite.ts     # customized hook function, wrapping api method into react query
+│   │   │    └── useEventListener.tsx         # hook to add eventListener to an element
+│   │   └───ErrorBoundary.ts                  # ErrorBoundary component, used to catch error
 ├── tsconfig.json
 ├── cypress.json                              # e2e config
 ├── package.json
@@ -85,9 +86,10 @@ $ yarn e2e
 
 ## Error handling:
 
-1. The form need to pass all the validation schema before being submitted.
-2. If the server returns an error, error message will be displayed in an antd package's notification component.
-3. The error will also passed to Form component to be displayed under the form
+1. ErrorBoundary is defined and wrapping different levels of the components. Any error will be caught be ErrorBoundary and easy to locate.
+2. The form need to pass all the validation schema before being submitted.
+3. If the server returns an error, error message will be displayed in an antd package's notification component.
+4. The error will also passed to Form component to be displayed under the form
 
 ## Architecture design
 

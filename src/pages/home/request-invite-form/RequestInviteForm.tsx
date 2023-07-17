@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useCallback, useMemo } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Form from "../../../component/form/Form";
@@ -12,7 +12,7 @@ import ErrorBoundary from "../../../utils/ErrorBoundary";
 const RequestInviteForm = ({ closeModal }: TRequestInviteForm) => {
 	const requestInviteFormItems: TInputProps[] = useMemo(
 		() => [
-			{ name: "name", title: "Full name" },
+			{ name: "name", title: "Full Name" },
 			{ name: "email", title: "Email" },
 			{ name: "confirmEmail", title: "Confirm Email" },
 		],
@@ -27,13 +27,6 @@ const RequestInviteForm = ({ closeModal }: TRequestInviteForm) => {
 		resolver: yupResolver(schema),
 	});
 
-	const onSubmit: SubmitHandler<TFormFields> = ({
-		name,
-		email,
-	}: TFormFields) => {
-		mutate({ name, email });
-	};
-
 	const {
 		mutate,
 		isLoading,
@@ -41,6 +34,13 @@ const RequestInviteForm = ({ closeModal }: TRequestInviteForm) => {
 		error: serverError,
 		isSuccess,
 	} = usePostRequestInviteData();
+
+	const onSubmit: SubmitHandler<TFormFields> = useCallback(
+		({ name, email }: TFormFields) => {
+			mutate({ name, email });
+		},
+		[mutate]
+	);
 
 	return isSuccess ? (
 		// submit success page
