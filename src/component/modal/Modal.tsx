@@ -32,4 +32,4 @@ const Modal = ({
 	);
 };
 
-export default Modal;
+export default React.memo(Modal);

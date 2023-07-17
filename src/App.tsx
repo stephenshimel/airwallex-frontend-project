@@ -1,13 +1,16 @@
 import React from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Home from "./pages/home/Home";
+import ErrorBoundary from "./utils/ErrorBoundary";
 
 const queryClient = new QueryClient();
 
 function App() {
 	return (
 		<QueryClientProvider client={queryClient}>
-			<Home />
+			<ErrorBoundary>
+				<Home />
+			</ErrorBoundary>
 		</QueryClientProvider>
 	);
 }

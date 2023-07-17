@@ -79,8 +79,9 @@ $ yarn e2e
 
 1. Unit tests are added to ALL the reusable components: Header, Footer, Modal, Form, Input, Button etc..
 2. Integration test is added to RequestInviteForm component. As this component handled the core logic of form and api call.
-3. Snapshot test are added to the home page and the modal
-4. E2E test using cypress is implemented. Video attached above
+3. Snapshot test are added to the home page and the modal.
+4. Unit tests are added to api call method.
+5. E2E test using cypress is implemented. Video attached above.
 
 ## Error handling:
 
@@ -97,3 +98,9 @@ $ yarn e2e
 5. All the styled components have expose a className props, allowing future consumer customize styles
 6. Emotion package, instead of a css file, is used for styling. As javascript give us more convenience to customize dynamic style based on states.
 7. Media query is used to ensure the app runs smoothly on all screen sizes. E2E test has tested responsive design.
+
+## Performance optimizing
+
+1. HOC React.memo is used to wrap reusable components such as Footer, Button, Modal, Input, and Form, that receive props and just render something without having any state or effects of their own.
+2. useMemo and useCallback is used to prevent unnecessary rerender of object/function
+3. uuid is used as key of elements rendered by a map method.

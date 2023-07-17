@@ -5,5 +5,5 @@ export type TFormFields = {
 };
 
 export type TRequestInviteForm = {
-	buttonOnclick?: () => void;
+	closeModal?: () => void;
 };

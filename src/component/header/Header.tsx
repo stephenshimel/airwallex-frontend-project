@@ -10,4 +10,4 @@ const Header = ({ title, className }: THeaderProps): ReactElement => {
 	);
 };
 
-export default Header;
+export default React.memo(Header);

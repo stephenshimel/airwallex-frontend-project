@@ -11,4 +11,4 @@ const Input = React.forwardRef<HTMLInputElement, TInputProps>(
 	)
 );
 
-export default Input;
+export default React.memo(Input);

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useMemo } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, SubmitHandler } from "react-hook-form";
 import Form from "../../../component/form/Form";
@@ -7,13 +7,17 @@ import { TInputProps } from "../../../component/form/types";
 import { TFormFields, TRequestInviteForm } from "./types";
 import { schema } from "./schema";
 import usePostRequestInviteData from "../../../utils/hooks/usePostRequestInvite";
+import ErrorBoundary from "../../../utils/ErrorBoundary";
 
-const RequestInviteForm = ({ buttonOnclick }: TRequestInviteForm) => {
-	const requestInviteFormItems: TInputProps[] = [
-		{ name: "name", title: "Full name" },
-		{ name: "email", title: "Email" },
-		{ name: "confirmEmail", title: "Confirm Email" },
-	];
+const RequestInviteForm = ({ closeModal }: TRequestInviteForm) => {
+	const requestInviteFormItems: TInputProps[] = useMemo(
+		() => [
+			{ name: "name", title: "Full name" },
+			{ name: "email", title: "Email" },
+			{ name: "confirmEmail", title: "Confirm Email" },
+		],
+		[]
+	);
 
 	const {
 		register,
@@ -39,26 +43,30 @@ const RequestInviteForm = ({ buttonOnclick }: TRequestInviteForm) => {
 	} = usePostRequestInviteData();
 
 	return isSuccess ? (
+		// submit success page
 		<Form
 			title={strings.submitSuccessPage.title}
 			subTitle={strings.submitSuccessPage.subTitle}
 			buttonLabel={strings.submitSuccessPage.buttonLabel}
-			formRelated={{ onSubmit: buttonOnclick }}
+			formRelated={{ onSubmit: closeModal }}
 		/>
 	) : (
-		<Form<TFormFields>
-			title={strings.requestInvitePage.requestFormTitle}
-			buttonLabel={strings.requestInvitePage.sendButtonLabel}
-			formRelated={{
-				formItems: requestInviteFormItems,
-				isLoading: isLoading,
-				isServerError: isServerError,
-				serverError: serverError as string,
-				onSubmit: handleSubmit(onSubmit),
-				errors: errors,
-				register: register,
-			}}
-		/>
+		// form page
+		<ErrorBoundary>
+			<Form<TFormFields>
+				title={strings.requestInvitePage.requestFormTitle}
+				buttonLabel={strings.requestInvitePage.sendButtonLabel}
+				formRelated={{
+					formItems: requestInviteFormItems,
+					isLoading: isLoading,
+					isServerError: isServerError,
+					serverError: serverError as string,
+					onSubmit: handleSubmit(onSubmit),
+					errors: errors,
+					register: register,
+				}}
+			/>
+		</ErrorBoundary>
 	);
 };
 

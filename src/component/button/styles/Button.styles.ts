@@ -18,4 +18,5 @@ export const StyledButton = styled.button<TStyledButtonProps>`
 	display: block;
 	margin: 0 auto;
 	width: ${props => (props.isFullWidth ? "100%" : "auto")};
+	font-family: "Open Sans";
 `;

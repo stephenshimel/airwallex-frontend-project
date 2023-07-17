@@ -13,4 +13,4 @@ const Footer: React.FC<TFooterProps> = ({ content, className }) => {
 	);
 };
 
-export default Footer;
+export default React.memo(Footer);
