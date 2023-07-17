@@ -101,6 +101,7 @@ E2e test demo:
 5. All the styled components have expose a className props, allowing future consumer customize styles
 6. Emotion package, instead of a css file, is used for styling. As javascript give us more convenience to customize dynamic style based on states.
 7. Media query is used to ensure the app runs smoothly on all screen sizes. E2E test has tested responsive design.
+8. Defined absolute path starting point as src in tsconfig file. For more readable import path.
 
 ## Performance optimizing
 

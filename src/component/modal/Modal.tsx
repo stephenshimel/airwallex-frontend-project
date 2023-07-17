@@ -1,7 +1,7 @@
 import React, { ReactElement, useRef } from "react";
 import { ModalWrapper } from "./styles/Modal.styles";
 import { TModalProps } from "./types";
-import { useEventListener } from "../../utils/hooks/useEventListener";
+import { useEventListener } from "utils/hooks/useEventListener";
 
 // in order to reuse Modal component, just need to create a state in its container and pass the closeModal function to the Modal
 const Modal = ({

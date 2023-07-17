@@ -1,17 +1,17 @@
 import React, { useCallback, useState } from "react";
-import Footer from "../../component/footer/Footer";
-import Header from "../../component/header/Header";
-import { strings } from "../../constants/strings";
+import Footer from "component/footer/Footer";
+import Header from "component/header/Header";
 import {
 	PageContent,
 	PageWrapper,
 	AdTitle,
 	AdText,
 } from "./styles/Home.styles";
-import Button from "../../component/button/Button";
-import Modal from "../../component/modal/Modal";
 import RequestInviteForm from "./request-invite-form/RequestInviteForm";
-import ErrorBoundary from "../../utils/ErrorBoundary";
+import { strings } from "constants/strings";
+import Button from "component/button/Button";
+import Modal from "component/modal/Modal";
+import ErrorBoundary from "utils/ErrorBoundary";
 
 function Home() {
 	const [isModalOpen, setIsModalOpen] = useState<boolean>(false);

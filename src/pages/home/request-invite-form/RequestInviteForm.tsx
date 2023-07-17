@@ -1,13 +1,13 @@
 import React, { useCallback, useMemo } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm, SubmitHandler } from "react-hook-form";
-import Form from "../../../component/form/Form";
-import { strings } from "../../../constants/strings";
-import { TInputProps } from "../../../component/form/types";
 import { TFormFields, TRequestInviteForm } from "./types";
 import { schema } from "./schema";
-import usePostRequestInviteData from "../../../utils/hooks/usePostRequestInvite";
-import ErrorBoundary from "../../../utils/ErrorBoundary";
+import Form from "component/form/Form";
+import ErrorBoundary from "utils/ErrorBoundary";
+import usePostRequestInviteData from "utils/hooks/usePostRequestInvite";
+import { strings } from "constants/strings";
+import { TInputProps } from "component/form/types";
 
 const RequestInviteForm = ({ closeModal }: TRequestInviteForm) => {
 	const requestInviteFormItems: TInputProps[] = useMemo(
