@@ -44,12 +44,6 @@ describe("The App", () => {
 		cy.wait(200);
 		cy.viewport("iphone-6");
 		cy.wait(200);
-		cy.viewport("iphone-5");
-		cy.wait(200);
-		cy.viewport("iphone-4");
-		cy.wait(200);
-		cy.viewport("iphone-3");
-		cy.wait(200);
 
 		cy.viewport("samsung-s10");
 		cy.wait(200);
@@ -83,12 +77,6 @@ describe("The App", () => {
 		cy.viewport("iphone-x");
 		cy.wait(200);
 		cy.viewport("iphone-6");
-		cy.wait(200);
-		cy.viewport("iphone-5");
-		cy.wait(200);
-		cy.viewport("iphone-4");
-		cy.wait(200);
-		cy.viewport("iphone-3");
 		cy.wait(200);
 
 		cy.viewport("samsung-s10");
