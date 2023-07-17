@@ -105,4 +105,5 @@ $ yarn e2e
 
 1. HOC React.memo is used to wrap reusable components such as Footer, Button, Modal, Input, and Form, that receive props and just render something without having any state or effects of their own.
 2. useMemo and useCallback is used to prevent unnecessary rerender of object/function
-3. uuid is used as key of elements rendered by a map method.
+3. It's good practice to use throttling to avoid impatient user frequently clicking on send button to call server. However, in the code, I have used isLoading value from react hook form to disable the button until a server response is returned. Therefore, throttling is not necessary here.
+4. uuid is used as key of elements rendered by a map method. For React better performance.

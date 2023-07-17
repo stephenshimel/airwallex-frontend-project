@@ -32,6 +32,8 @@ const Form = <T extends FieldValues>({
 	} = formRelated;
 
 	return (
+		// As we use react hook form's isLoading to disable the button when send data is being sent,
+		// there is no need to use throttling for submit function.
 		<FormWrapper className={className} onSubmit={onSubmit}>
 			<FormTitle>{title}</FormTitle>
 
