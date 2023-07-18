@@ -52,8 +52,6 @@ describe("The App", () => {
 
 		cy.viewport("ipad-2", "portrait");
 		cy.wait(200);
-		cy.viewport("iphone-4", "landscape");
-		cy.wait(200);
 	});
 
 	it("Modal should look good on all screens", () => {
