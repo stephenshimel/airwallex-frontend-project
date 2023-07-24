@@ -18,7 +18,7 @@ axios.interceptors.request.use((config: any) => {
 	return config;
 });
 
-// all the axios error in the app will be catched and displayed in UI
+// all the axios error in the app will be caught and displayed in UI
 axios.interceptors.response.use(
 	response => {
 		return response;

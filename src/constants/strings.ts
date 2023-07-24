@@ -1,7 +1,6 @@
 const companyName = "Broccoli & Co.";
 
 export const strings = {
-	// TODO: category Home page
 	homePage: {
 		header: { title: companyName.toUpperCase() },
 		footer: {

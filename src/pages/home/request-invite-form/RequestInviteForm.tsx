@@ -25,6 +25,7 @@ const RequestInviteForm = ({ closeModal }: TRequestInviteForm) => {
 		formState: { errors },
 	} = useForm<TFormFields>({
 		resolver: yupResolver(schema),
+		reValidateMode: "onSubmit",
 	});
 
 	const {
